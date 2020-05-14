@@ -1,6 +1,6 @@
 {
     "name": "tamer-dev/laravel-env-cli",
-    "description": "commands to work with .env file in cli",
+    "description": "laravel commands to work with .env file in cli",
     "type": "project",
     "license": "MIT",
     "authors": [
