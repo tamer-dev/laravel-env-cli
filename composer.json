@@ -1,0 +1,29 @@
+{
+    "name": "tamer-dev/laravel-env-cli",
+    "description": "commands to work with .env file in cli",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "tamer yousre",
+            "email": "tamer.dev.alex@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "TamerDev\\EnvironmentCommands\\": "src/"
+        }
+    },
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TamerDev\\EnvironmentCommands\\EnvironmentCommandsServiceProvider"
+            ]
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "8.5.x-dev"
+    }
+}
