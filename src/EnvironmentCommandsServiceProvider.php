@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use TamerDev\EnvironmentCommands\EnvironmentSetCommand;
 use TamerDev\EnvironmentCommands\EnvironmentReadCommand;
 use TamerDev\EnvironmentCommands\EnvironmentBackupCommand;
+use TamerDev\EnvironmentCommands\EnvironmentRestoreCommand;
 
 class EnvironmentCommandsServiceProvider extends ServiceProvider
 {
@@ -25,8 +26,10 @@ class EnvironmentCommandsServiceProvider extends ServiceProvider
         $this->app->bind('command.env:set', EnvironmentSetCommand::class);
         $this->app->bind('command.env:read', EnvironmentReadCommand::class);
         $this->app->bind('command.env:backup', EnvironmentBackupCommand::class);
+        $this->app->bind('command.env:restore', EnvironmentRestoreCommand::class);
+
         $this->commands([
-            'command.env:set','command.env:read','command.env:backup'
+            'command.env:set','command.env:read','command.env:backup','command.env:restore'
         ]);
     }
 }
