@@ -160,3 +160,5 @@ contribution are welcome ,if any one want to contribute in this package you can 
 this package inspired by this package [imliam/laravel-env-set-command](https://github.com/imliam/laravel-env-set-command),for that all thanks to [imliam](https://github.com/imliam) 
 
 ## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
