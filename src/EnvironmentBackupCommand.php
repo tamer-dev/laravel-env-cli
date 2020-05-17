@@ -40,7 +40,7 @@ class EnvironmentBackupCommand extends Command
     }
 
     /**
-     * Execute the console of set env command.
+     * Execute the command of Backup env file.
      *
      * @return mixed
      */
@@ -83,6 +83,13 @@ class EnvironmentBackupCommand extends Command
         return fclose($file);
     }
 
+    /**
+     * Open a file.
+     *
+     * @param string $envFilePath
+     * @param string $mode
+     * @return filestream
+     */
     public function openFile(string $envFilePath , string $mode ="r")
     { 
         if (!file_exists($envFilePath) && $mode =="r") {
@@ -92,8 +99,13 @@ class EnvironmentBackupCommand extends Command
         return fopen($envFilePath,$mode);
     }
 
-
-    protected function makeBackup($envFilePath)
+    /**
+     * Make a Backup from a file .
+     *
+     * @param string $envFilePath
+     * @return boolean
+     */
+    protected function makeBackup($envFilePath): bool
     {
         $fileContent =  file_get_contents($envFilePath);
         $this->newFilePath =$envFilePath.".backup_".date("YmdHis");

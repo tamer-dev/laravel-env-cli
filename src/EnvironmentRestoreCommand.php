@@ -34,7 +34,7 @@ class EnvironmentRestoreCommand extends Command
     }
 
     /**
-     * Execute the console of set env command.
+     * Execute the command of Restore env file.
      *
      * @return mixed
      */
@@ -73,6 +73,24 @@ class EnvironmentRestoreCommand extends Command
         return base_path($this->argument('backupedFileName'));
     }
 
+    /**
+     * Restore env file from a backup file.
+     *
+     * @param string $backupedFilePath
+     * @param string $envFilePath
+     * @return boolean
+     */
+    protected function makeRestore($backupedFilePath,$envFilePath): bool
+    {
+        if (!file_exists($backupedFilePath) ) {
+            throw new \Exception("The file $backupedFilePath does not exist ");
+        }
+        if (!file_exists($envFilePath) ) {
+            throw new \Exception("The file $envFilePath does not exist ");
+        }
+        $fileContent =  file_get_contents($backupedFilePath);
+        return $this->writeFile($envFilePath,  $fileContent);
+    }
 
     /**
      * Overwrite the contents of a file.
@@ -89,6 +107,13 @@ class EnvironmentRestoreCommand extends Command
         return fclose($file);
     }
 
+    /**
+     * Open a file.
+     *
+     * @param string $envFilePath
+     * @param string $mode
+     * @return filestream
+     */
     public function openFile(string $envFilePath , string $mode ="r")
     { 
         if (!file_exists($envFilePath) && $mode =="r") {
@@ -96,19 +121,6 @@ class EnvironmentRestoreCommand extends Command
         }
 
         return fopen($envFilePath,$mode);
-    }
-
-
-    protected function makeRestore($backupedFilePath,$envFilePath)
-    {
-        if (!file_exists($backupedFilePath) ) {
-            throw new \Exception("The file $backupedFilePath does not exist ");
-        }
-        if (!file_exists($envFilePath) ) {
-            throw new \Exception("The file $envFilePath does not exist ");
-        }
-        $fileContent =  file_get_contents($backupedFilePath);
-        return $this->writeFile($envFilePath,  $fileContent);
     }
 
 }

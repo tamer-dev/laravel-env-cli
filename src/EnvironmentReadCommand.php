@@ -13,7 +13,7 @@ class EnvironmentReadCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'env:read {key} {--file=}';
+    protected $signature = 'env:read {key} {--file=.env}';
 
     /**
      * The console command description.
@@ -42,7 +42,7 @@ class EnvironmentReadCommand extends Command
     }
 
     /**
-     * Execute the console command.
+     * Execute the command of Read env variable.
      *
      * @return mixed
      */
@@ -50,14 +50,13 @@ class EnvironmentReadCommand extends Command
     {
         try {
             $key = $this->getKeyArgument();
-        } catch (\InvalidArgumentException $e) {
+            $envFilePath = $this->getEnvFilePath();
+            $file = fopen($envFilePath,"r");
+            $value = $this->readValue($file,$key);
+        } catch (\Exception $e) {
             return $this->error($e->getMessage());
         }
         
-        $envFilePath = $this->getEnvFilePath();
-        $file = fopen($envFilePath,"r");
-        $value = $this->readValue($file,$key);
-
         return $this->getMessage($key,$value);
     }
 
@@ -130,12 +129,7 @@ class EnvironmentReadCommand extends Command
      */
     protected function getEnvFilePath(): string
     {
-        if($this->option('file')){
-            $envFilePath = base_path($this->option('file'));
-        }else{
-            $envFilePath = app()->environmentFilePath();
-        }
-        return $envFilePath;
+        return base_path($this->option('file'));
     }
 
     /**
@@ -145,10 +139,11 @@ class EnvironmentReadCommand extends Command
      */
     protected function getMessage($key,$value)
     {
+        $envFile = $this->option('file');
         if($this->key_found){
-            $message = $this->info("Environment variable with key '{$key}' have value from .env file '{$value}'");
+            $message = $this->info("Environment variable with key [{$key}] have value [{$value}] file used is $envFile ");
         }else{
-            $message = $this->info("Environment variable with key '{$key}' not found") ;
+            $message = $this->info("Environment variable with key [{$key}] not found") ;
         }
         return $message;
     }
