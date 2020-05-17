@@ -31,7 +31,7 @@ composer require tamer-dev/laravel-env-cli
 
 ## Usage
 
-####1- Set Environment Variable Command
+#### 1- Set Environment Variable Command
 command definition :-
 `env:set {key} {value}`
 
@@ -85,7 +85,7 @@ another features :-
 - stop updateing in APP_KEY 
 
 
-####2- Read Environment Variable Command
+#### 2- Read Environment Variable Command
 
 command definition :-
 `env:read {key}`
@@ -103,7 +103,7 @@ $ php artisan env:read app_name --file=.env.example
 #Environment variable with key [APP_NAME] have value [tamertest3] file used is .env.example
 ```
 
-####3- Backup Environment File Command
+#### 3- Backup Environment File Command
 
 this command will make a backup from env file (a new file backup with the name '.env.backup_<current_date_time>' will be created)
 
@@ -123,7 +123,7 @@ $ php artisan env:backup --file=.env.example
 #new environment backup file has been created in this path '/var/www/html/laravel-env-cli/.env.example.backup_20200517205000'
 ```
 
-####4- Restore Environment File Command
+#### 4- Restore Environment File Command
 restore your .env file from a backup file
 
 command definition :-
@@ -149,14 +149,14 @@ $ php artisan env:restore .env.backup_20200517204848 --file=.env.example
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-##Contribution  
+## Contribution  
 contribution are welcome ,if any one want to contribute in this package you can start by picking from this list : -
 
 - add tests
 - add more commands and important features
 - fix any issues 
 
-##Notes
+## Notes
 this package inspired by this package [imliam/laravel-env-set-command](https://github.com/imliam/laravel-env-set-command),for that all thanks to [imliam](https://github.com/imliam) 
 
 ## License
