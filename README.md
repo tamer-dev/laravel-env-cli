@@ -4,8 +4,10 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/tamer-dev/laravel-env-cli.svg)](https://packagist.org/packages/tamer-dev/laravel-env-cli)
 [![License](https://img.shields.io/github/license/tamer-dev/laravel-env-cli.svg)](LICENSE.md)
 
-This Laravel >= 5.7 package offer to you some commands to work with .env file from the command line.
-if you are making changes frequently to env file this package will help you to do this fast and by effective way.
+This Laravel package offers to you some commands to work with your env file from the command line.
+if you are making changes frequently to your env file this package will help you to do this fast and in an effective way.
+
+This package supports the Laravel version from 5.7 to 9 .
 
 <!-- TOC -->
 
