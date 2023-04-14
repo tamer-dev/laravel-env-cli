@@ -7,7 +7,7 @@
 This Laravel package offers to you some commands to work with your env file from the command line.
 if you are making changes frequently to your env file this package will help you to do this fast and in an effective way.
 
-This package supports the Laravel version from 5.7 to 9 .
+This package supports the Laravel version from 5.7 to 10 .
 
 <!-- TOC -->
 
